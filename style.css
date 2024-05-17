@@ -1,0 +1,22 @@
+*{
+    color: white;
+    
+}
+
+body{
+    background-color: rgba(33, 36, 44, 0.959);
+    
+}
+
+.contenedorPrincipal{
+    display: grid;
+    width: 280px;
+    height: 280px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+}
+
+.cuadro{
+   border: 1px solid white;
+}
+
