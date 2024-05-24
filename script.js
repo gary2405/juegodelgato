@@ -78,3 +78,13 @@ function jugadaCompu() { //turno de la computadora
     }
    
 }
+
+ function reiniciar() { // Reiniciar el juego
+    for (let index = 0; index < cuadros.length; index++) {
+        //limpiará los cuadros del tablero
+        cuadros[index].textContent = ""; 
+        mensaje.textContent = "Ha ganado " +jugadorActual; //limpiara el mensaje de gane
+        mensaje.textContent = "ㅤㅤㅤㅤㅤ";
+    }
+}
+
