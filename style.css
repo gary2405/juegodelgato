@@ -1,20 +1,46 @@
-*{
-    color: white;
+body {  
+    color: #e6cc81;
+    /*color: #bab4c7;*/
+    text-align: center;
+    margin-top: 10%;
+    
 }
 
-body{
-    background-color: rgb(33, 36, 44);
-}
 
-.contenedorPrincipal{
+#contenedorPr{
+   
+    width: 200px;
+    height: 200px;
     display: grid;
-    width: 280px;
-    height: 280px;
     grid-template-columns: repeat(3, 1fr);
-    margin: auto;
+    margin-left: 38%;
+    
 }
 
-.cuadro{
-   border: 1px solid white;
+.cuadro {
+    width: 90px;
+    height: 90px;
+    border: 1.5px solid #e6cc81;
+    border-radius: 10px;
+    font-size: 70px;
+    
 }
+
+.cuadro:hover{
+    background-color: #e6cd8126;
+}
+
+#mensajeGanador{
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 7%;
+    font-size: large;
+}
+
+
+
+
+
+
+
 
