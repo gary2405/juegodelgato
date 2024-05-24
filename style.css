@@ -1,6 +1,12 @@
 body {  
     color: #e6cc81;
     /*color: #bab4c7;*/
+    background-image: url(img/reverse-side-of-a-tarot-cards-batch-magic-frame-vector-49111500.jpg);
+    background-color: rgba(0, 0, 0, 0.897);
+    background-position: 50%;
+    background-size: 1225px 630px;
+    /*background-size: 1180px 620px;*/
+    background-repeat: no-repeat;
     text-align: center;
     margin-top: 10%;
     
@@ -37,7 +43,17 @@ body {
     font-size: large;
 }
 
-
+#volverJuego {
+    font-style: italic;
+    height: 25px;
+    width: 90px;
+    /*background-color: #bab4c7;*/
+    background-color: #e6cc81;
+    border: none;
+    border-radius: 15px;
+    font-size: 8px;
+    margin-top: -8%;
+}
 
 
 
