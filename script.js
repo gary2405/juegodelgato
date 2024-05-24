@@ -34,6 +34,7 @@ for (let index = 0; index < cuadros.length; index++) {
                 cambioDeTurno();
                 setTimeout(jugadaCompu, 800); // el tiempo que durará la computadora al hacer su tiro
             }
+            
         }
     });
 
@@ -46,6 +47,10 @@ function cambioDeTurno() { //funcion para cambiar el turno de jugador
         mensaje.textContent = "Turno de ✺"
     }
 
+    if (verSiGana (jugadores[1])) {
+        mensaje.textContent = "Ha ganado ✺ "; 
+        return;
+    }
 }
 
 
@@ -53,7 +58,7 @@ function cambioDeTurno() { //funcion para cambiar el turno de jugador
 function verSiGana(jugadorActual) { //funcion para ver si algun jugador ganó
     for (let index = 0; index < matriz.length; index++) {
         const [c1, c2, c3] = matriz[index]; // c1 c2 c3 representan los tres cuadros que ganan
-        if (cuadros[c1].textContent == jugadorActual && cuadros[c2].textContent == jugadorActual && cuadros[c3].textContent == jugadorActual) {
+        if (cuadros[c1].textContent === jugadorActual && cuadros[c2].textContent === jugadorActual && cuadros[c3].textContent === jugadorActual) {
             stop = false
             return true; //retorna true si los tres cuadros tienen el mismo elemento
         }
@@ -69,19 +74,22 @@ function verEmpate() { //funcion pra ver si los jugadores terminaron empatados
     }
     return true; //true si todos los cuadros esta llenos
 }
+
 function jugadaCompu() { //turno de la computadora
     let cuadrosVacios = [] //guarada posicion de cuadros vacios
     for (let index = 0; index < cuadros.length; index++) {
         //para saber si el cuadro actual estara vacio
         if (cuadros[index].textContent == "") {
+            
             cuadrosVacios.push(index);
         }
+        
 
         //comprueba si hay cuadros disponibles
     } if (cuadrosVacios.length > 0) {
         let cuadroAlAzar = Math.floor(Math.random() * cuadrosVacios.length); //elegirá una posicion random de array cuadrosVacios
         let cuadroEscogido = cuadrosVacios[cuadroAlAzar]; //variable que tiene la posicion de del cuadro escogido
-        cuadros[cuadroEscogido].innerHTML = jugadorActual; //pondra el simbolo en el cuadro escogido del jugador
+        cuadros[cuadroEscogido].textContent = jugadores[1]; //pondra el simbolo en el cuadro escogido del jugador
         cambioDeTurno();
     }
 
