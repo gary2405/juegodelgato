@@ -1,0 +1,46 @@
+body {  
+    color: #e6cc81;
+    /*color: #bab4c7;*/
+    text-align: center;
+    margin-top: 10%;
+    
+}
+
+
+#contenedorPr{
+   
+    width: 200px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 38%;
+    
+}
+
+.cuadro {
+    width: 90px;
+    height: 90px;
+    border: 1.5px solid #e6cc81;
+    border-radius: 10px;
+    font-size: 70px;
+    
+}
+
+.cuadro:hover{
+    background-color: #e6cd8126;
+}
+
+#mensajeGanador{
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 7%;
+    font-size: large;
+}
+
+
+
+
+
+
+
+
