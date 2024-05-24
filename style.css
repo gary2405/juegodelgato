@@ -47,7 +47,6 @@ body {
     font-style: italic;
     height: 25px;
     width: 90px;
-    /*background-color: #bab4c7;*/
     background-color: #e6cc81;
     border: none;
     border-radius: 15px;
@@ -55,7 +54,14 @@ body {
     margin-top: -8%;
 }
 
-
+.music{
+   filter: invert() opacity(80%);
+   width: 12%;
+   position: absolute;
+   margin-top: -3%;
+   margin-left: 30%;
+   
+}
 
 
 

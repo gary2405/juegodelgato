@@ -13,43 +13,51 @@ let cuadros = document.getElementsByClassName('cuadro'); //todos los cuadros
 let jugadores = ["✦", "✺"]; //los dos jugadores
 let mensaje = document.querySelector("#mensajeGanador");
 let jugadorActual = jugadores[0]; // Primer jugador (✦)
+let stop = true
 
 for (let index = 0; index < cuadros.length; index++) {
     cuadros[index].addEventListener('click', () => {
-        if (cuadros[index].innerHTML == "" && jugadorActual == jugadores[0]) { //solo permite al jugador (yo) haga su tiro
-            cuadros[index].innerHTML = jugadorActual; //pondrá ✦ del primer jugador cuando presione un cuadro
-            if (verSiGana(jugadorActual)) {//si el jugador actual ha ganado 
-                mensaje.textContent = "Ha ganado " + jugadorActual; //mostrara mensaje de quien ganó
-                return; // termina funcion caundo haya un ganador o empate
-            } else if (verEmpate()) { //si hay empate
-                mensaje.textContent = "Empate"; //mostrará mensaje de empate
-                return;
+        if (stop) {
+            if (cuadros[index].innerHTML == "" && jugadorActual == jugadores[0]) { //solo permite al jugador (yo) haga su tiro
+                cuadros[index].innerHTML = jugadorActual; //pondrá ✦ del primer jugador cuando presione un cuadro
+                if (verSiGana(jugadorActual)) {//si el jugador actual ha ganado 
+                    mensaje.textContent = "Ha ganado " + jugadorActual; //mostrara mensaje de quien ganó
+                    return; // termina funcion caundo haya un ganador o empate
+                    
+                } 
+                else if (verEmpate()) { //si hay empate
+                    mensaje.textContent = "Empate"; //mostrará mensaje de empate
+                    return;
+                }
+
+                
+                cambioDeTurno();
+                setTimeout(jugadaCompu, 800); // el tiempo que durará la computadora al hacer su tiro
             }
-            cambioDeTurno();
-            setTimeout(jugadaCompu, 800); // el tiempo que durará la computadora al hacer su tiro
         }
     });
-    
+
 }
 function cambioDeTurno() { //funcion para cambiar el turno de jugador
     jugadorActual = (jugadorActual == jugadores[0]) ? jugadores[1] : jugadores[0];
- if (jugadorActual === jugadores[0]) {
-    mensaje.textContent = "Turno de ✦"
- }else {
-    mensaje.textContent = "Turno de ✺"
- }
+    if (jugadorActual === jugadores[0]) {
+        mensaje.textContent = "Turno de ✦"
+    } else { //mensaje que mostrara cual jugador sigue
+        mensaje.textContent = "Turno de ✺"
+    }
 
 }
-    
-    
+
+
 
 function verSiGana(jugadorActual) { //funcion para ver si algun jugador ganó
     for (let index = 0; index < matriz.length; index++) {
         const [c1, c2, c3] = matriz[index]; // c1 c2 c3 representan los tres cuadros que ganan
         if (cuadros[c1].textContent == jugadorActual && cuadros[c2].textContent == jugadorActual && cuadros[c3].textContent == jugadorActual) {
+            stop = false
             return true; //retorna true si los tres cuadros tienen el mismo elemento
         }
-        
+
     }
     return false;
 }
@@ -70,21 +78,25 @@ function jugadaCompu() { //turno de la computadora
         }
 
         //comprueba si hay cuadros disponibles
-    }if (cuadrosVacios.length > 0) {
+    } if (cuadrosVacios.length > 0) {
         let cuadroAlAzar = Math.floor(Math.random() * cuadrosVacios.length); //elegirá una posicion random de array cuadrosVacios
         let cuadroEscogido = cuadrosVacios[cuadroAlAzar]; //variable que tiene la posicion de del cuadro escogido
         cuadros[cuadroEscogido].innerHTML = jugadorActual; //pondra el simbolo en el cuadro escogido del jugador
         cambioDeTurno();
     }
-   
-}
 
- function reiniciar() { // Reiniciar el juego
+}
+function reiniciar() { // Reiniciar el juego
     for (let index = 0; index < cuadros.length; index++) {
         //limpiará los cuadros del tablero
-        cuadros[index].textContent = ""; 
-        mensaje.textContent = "Ha ganado " +jugadorActual; //limpiara el mensaje de gane
+        cuadros[index].textContent = "";
+        mensaje.textContent = "Ha ganado " + jugadorActual; //limpiara el mensaje de gane
         mensaje.textContent = "ㅤㅤㅤㅤㅤ";
+        stop = true
     }
 }
 
+let audio = document.getElementById("miaudio");
+function reproducirAudio() {
+    audio.play();
+}
